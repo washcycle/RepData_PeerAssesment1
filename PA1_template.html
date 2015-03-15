@@ -94,6 +94,7 @@ activity &lt;- read.csv(&quot;activity.csv&quot;,
 </div>
 <div id="mean-steps-taken-per-day" class="section level3">
 <h3>Mean steps taken per day</h3>
+<p>Sum total steps taken per day</p>
 <pre class="r"><code>total_steps_per_day &lt;- 
   activity %&gt;% 
   group_by(date) %&gt;% 
@@ -136,7 +137,7 @@ mean_interval_activity[which.max(mean_interval_activity$mean.steps),]</code></pr
 <pre class="r"><code>sapply(activity, function(x) sum(is.na(x)))</code></pre>
 <pre><code>##    steps     date interval 
 ##     2304        0        0</code></pre>
-<p>Replace NA step values with mean step value for that interval</p>
+<p>Replace NA step values with mean step value for that 5-minute interval</p>
 <pre class="r"><code>pactivity &lt;- activity
 for(idx in which(is.na(pactivity$steps), arr.ind = T)){
   pactivity[idx, 1] &lt;- mean_interval_activity[mean_interval_activity$interval == pactivity[idx, 3], 2]

@@ -36,6 +36,8 @@ summary(activity, na.rm=T)
 
 ### Mean steps taken per day
 
+Sum total steps taken per day
+
 ```{r, echo=T}
 total_steps_per_day <- 
   activity %>% 
@@ -83,7 +85,7 @@ sapply(activity, function(x) sum(is.na(x)))
 ```
 
 
-Replace NA step values with mean step value for that interval
+Replace NA step values with mean step value for that 5-minute interval
 ```{r, echo=TRUE}
 pactivity <- activity
 for(idx in which(is.na(pactivity$steps), arr.ind = T)){
